@@ -1,0 +1,28 @@
+var img_enemy = new Image();
+img_enemy.src = "shark.png";
+
+var enemy = [];
+enemy.push({x:200,y:0,w:50,h:50,ysp:5, pt:1})
+enemy.push({x:200,y:0,w:50,h:50,ysp:5, pt:1})
+enemy.push({x:200,y:0,w:50,h:50,ysp:5, pt:1})
+enemy.push({x:200,y:0,w:50,h:50,ysp:5, pt:2})
+enemy.push({x:200,y:0,w:50,h:50,ysp:5, pt:2})
+
+function enemyfall() {
+	for (var i = 0; i < enemy.length; i++){
+cx.drawImage(img_enemy, enemy[i].x, enemy[i].y, enemy[i].w, enemy[i].h);
+enemy[i].y += enemy[i].ysp;
+if(x+w>enemy[i].x && enemy[i].x+enemy[i].w > x && y+h > enemy[i].y && enemy[i].y + enemy[i].h > y){
+		health -= enemy[i].pt;
+		if ( health<=0 ){
+img_player.src="deadpenguin.png"; 
+dead=true
+}
+		enemy[i].y = 0; 
+    enemy[i].x = Math.random()*canvas.width;
+		}
+	if ( enemy[i].y >= canvas.height ) {
+		enemy[i].y = 0; 
+      enemy[i].x = Math.random()*canvas.width;
+		}
+}}
